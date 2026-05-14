@@ -1,164 +1,420 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hermes Pages</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-    background: #0d0d0d;
-    color: #e8e8e8;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-  }
-  .header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  .header h1 {
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 4px;
-    color: #666;
-    text-transform: uppercase;
-  }
-  .header .status {
-    margin-top: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    color: #3d3;
-    letter-spacing: 2px;
-  }
-  .status-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #3d3;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 2px;
-    width: 100%;
-    max-width: 900px;
-  }
-  .card {
-    background: #141414;
-    border: 1px solid #222;
-    padding: 32px 28px;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: all 0.2s;
-    position: relative;
-  }
-  .card:hover {
-    background: #1a1a1a;
-    border-color: #333;
-  }
-  .card-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: #e0e0e0;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-  }
-  .card-path {
-    font-size: 10px;
-    color: #444;
-    letter-spacing: 1px;
-  }
-  .card-arrow {
-    position: absolute;
-    top: 28px;
-    right: 24px;
-    font-size: 12px;
-    color: #333;
-    transition: color 0.2s, transform 0.2s;
-  }
-  .card:hover .card-arrow {
-    color: #888;
-    transform: translate(2px, -2px);
-  }
-  .footer {
-    margin-top: 60px;
-    font-size: 10px;
-    color: #333;
-    letter-spacing: 2px;
-  }
-  .loading {
-    color: #444;
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-  .error {
-    color: #933;
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-</style>
-</head>
-<body>
-  <div class="header">
-    <h1>Hermes Pages</h1>
-    <div class="status">
-      <span class="status-dot"></span>
-      <span>CONNECTED</span>
-    </div>
-  </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux 入门指南 | kami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --text: #2c2c2c;
+      --accent: #8b7355;
+      --code-bg: #f0ede8;
+      --border: #d4cfc7;
+    }
 
-  <div class="grid" id="grid">
-    <div class="loading">LOADING...</div>
-  </div>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <div class="footer">DEPLOYED ON CLOUDFLARE PAGES · LIVE</div>
+    body {
+      font-family: 'ZCOOL XiaoWei', '霞鹜文楷', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 2;
+      font-size: 16px;
+      padding: 60px 20px;
+    }
 
-  <script>
-    async function loadProjects() {
-      const grid = document.getElementById('grid');
-      try {
-        // Fetch directory listing from GitHub API
-        const resp = await fetch(
-          'https://api.github.com/repos/orangeshinee/DeployPages/contents/',
-          { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-        );
-        if (!resp.ok) throw new Error('API error');
-        const items = await resp.json();
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-        const dirs = items
-          .filter(item => item.type === 'dir' && !item.name.startsWith('.'))
-          .sort((a, b) => a.name.localeCompare(b.name));
+    header {
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        if (dirs.length === 0) {
-          grid.innerHTML = '<div class="loading">NO PROJECTS YET</div>';
-          return;
-        }
+    h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
 
-        const base = 'https://hermespages.shine-ee-zhang-product.workers.dev/';
-        grid.innerHTML = dirs.map(d => `
-          <a class="card" href="${base}${d.name}/">
-            <div class="card-arrow">→</div>
-            <div class="card-name">${d.name.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</div>
-            <div class="card-path">/${d.name}/</div>
-          </a>
-        `).join('');
-      } catch (e) {
-        grid.innerHTML = '<div class="error">FAILED TO LOAD PROJECTS</div>';
+    .subtitle {
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 50px 0 20px;
+      color: var(--text);
+    }
+
+    p {
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .concept {
+      background: var(--code-bg);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    .tree {
+      font-family: monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 0.88em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 20px 0;
+      line-height: 1.8;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.85rem;
+    }
+
+    .cmd {
+      color: #5c6bc0;
+    }
+
+    .comment {
+      color: #999;
+    }
+
+    .output {
+      color: #66bb6a;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    tr:hover {
+      background: var(--code-bg);
+    }
+
+    .step {
+      display: flex;
+      margin: 24px 0;
+      gap: 16px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-family: monospace;
+    }
+
+    .step-content {
+      padding-top: 2px;
+    }
+
+    .step-content code {
+      color: var(--accent);
+    }
+
+    .note {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    .resources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .resource {
+      background: var(--code-bg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .resource:hover {
+      background: var(--border);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 40px 16px;
+        font-size: 15px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      pre {
+        padding: 14px;
+        font-size: 0.8rem;
       }
     }
-    loadProjects();
-  </script>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Linux 入门指南</h1>
+      <p class="subtitle">一张纸，从零到跑起来 · kami</p>
+    </header>
+
+    <section>
+      <h2>Linux 是什么</h2>
+      <p>
+        想象一下，Windows 和 macOS 是完整的汽车，出厂就带好了方向盘、车窗、雨刷。而 Linux 呢？它更像一台发动机——你可以用它组装出各种车型。专业说法：Linux 是<strong>内核</strong>，是系统的核心；而 Ubuntu、Debian、CentOS 是基于它构建的完整<strong>发行版</strong>。
+      </p>
+      <p>
+        为什么要学它？服务器几乎全是 Linux，程序员天天打交道，开源免费还能定制。学会它，就像掌握了计算机世界的通用语言。
+      </p>
+
+      <div class="concept">
+        <strong>类比记忆：</strong><br>
+        内核（Linux）＝ 发动机<br>
+        发行版（Ubuntu 等）＝ 整车品牌<br>
+        终端（Terminal）＝ 方向盘 + 仪表盘<br>
+        命令（Command）＝ 操作按钮
+      </div>
+    </section>
+
+    <section>
+      <h2>核心概念</h2>
+
+      <h3>文件系统</h3>
+      <p>Linux 的文件组织像一棵倒挂的树，所有文件和文件夹都从根目录 <code>/</code> 出发。</p>
+
+      <div class="tree">
+        /                     ← 根目录，起点<br>
+        ├── home/            ← 用户主目录，你的「家」<br>
+        │   └── username/    ← 个人文件放这里<br>
+        ├── usr/              ← 系统程序<br>
+        ├── etc/              ← 配置文件<br>
+        ├── var/              ← 经常变动的数据（日志等）<br>
+        └── tmp/              ← 临时文件
+      </div>
+
+      <h3>终端</h3>
+      <p>
+        那个黑黑的窗口就是终端。它等待你输入命令，执行后返回结果。学会它，你就掌握了和电脑「对话」的直接方式。
+      </p>
+
+      <h3>命令格式</h3>
+      <pre><code><span class="cmd">命令</span> <span class="comment">[-选项]</span> <span class="comment">[参数]</span>
+<span class="output"># 示例</span>
+ls -la /home          <span class="comment"># 列出 home 目录详细内容</span>
+</code></pre>
+    </section>
+
+    <section>
+      <h2>常用命令速查</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>命令</th>
+            <th>作用</th>
+            <th>示例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ls</code></td>
+            <td>列出文件</td>
+            <td><code>ls -la</code> 详细列表</td>
+          </tr>
+          <tr>
+            <td><code>cd</code></td>
+            <td>切换目录</td>
+            <td><code>cd /home</code></td>
+          </tr>
+          <tr>
+            <td><code>pwd</code></td>
+            <td>我在哪</td>
+            <td><code>pwd</code> 显示当前路径</td>
+          </tr>
+          <tr>
+            <td><code>mkdir</code></td>
+            <td>创建文件夹</td>
+            <td><code>mkdir test</code></td>
+          </tr>
+          <tr>
+            <td><code>touch</code></td>
+            <td>创建文件</td>
+            <td><code>touch hello.py</code></td>
+          </tr>
+          <tr>
+            <td><code>cp</code></td>
+            <td>复制</td>
+            <td><code>cp a.txt b.txt</code></td>
+          </tr>
+          <tr>
+            <td><code>mv</code></td>
+            <td>移动 / 重命名</td>
+            <td><code>mv old.txt new.txt</code></td>
+          </tr>
+          <tr>
+            <td><code>rm</code></td>
+            <td>删除</td>
+            <td><code>rm -rf folder</code> 强制递归删除</td>
+          </tr>
+          <tr>
+            <td><code>cat</code></td>
+            <td>查看文件内容</td>
+            <td><code>cat hello.py</code></td>
+          </tr>
+          <tr>
+            <td><code>sudo</code></td>
+            <td>临时获取管理员权限</td>
+            <td><code>sudo apt install nginx</code></td>
+          </tr>
+          <tr>
+            <td><code>chmod</code></td>
+            <td>改文件权限</td>
+            <td><code>chmod +x run.sh</code></td>
+          </tr>
+          <tr>
+            <td><code>grep</code></td>
+            <td>搜索内容</td>
+            <td><code>grep "hello" *.txt</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        💡 小技巧：按 <code>Tab</code> 键自动补全，按 <code>↑</code> <code>↓</code> 翻历史命令，<code>Ctrl+C</code> 取消当前操作。
+      </div>
+    </section>
+
+    <section>
+      <h2>动手实战</h2>
+      <p>跟着做，5 分钟跑完一个完整流程：</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          打开终端，输入：<br>
+          <code>mkdir linux-practice && cd linux-practice</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          创建文件并写入内容：<br>
+          <code>echo 'print("Hello, Linux!")' > hello.py</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          给文件加执行权限：<br>
+          <code>chmod +x hello.py</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          运行它：<br>
+          <code>python3 hello.py</code><br>
+          看到输出 <span class="output" style="font-family: monospace;">Hello, Linux!</span> 了吗？恭喜你跑完了第一个 Linux 程序。
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>下一步去哪</h2>
+      <p>纸上得来终觉浅，动手才是真。以下是学习路径：</p>
+
+      <div class="resources">
+        <a class="resource" href="https://www.runoob.com/linux/linux-tutorial.html" target="_blank">菜鸟教程</a>
+        <a class="resource" href="https://wangchujiang.com/linux-command/" target="_blank">Linux 命令大全</a>
+        <a class="resource" href="https://www.linuxprobe.com/" target="_blank">Linux就该这么学</a>
+        <a class="resource" href="https://lab.docker.com/" target="_blank">Docker Playground</a>
+        <a class="resource" href="https://www.terminalizer.com/" target="_blank">自己搭个虚拟机</a>
+      </div>
+
+      <p style="margin-top: 24px; color: #666;">
+        记住：命令会忘，这很正常。查文档、用 <code>man 命令</code> 查看帮助，是每个 Linux 用户的日常。
+      </p>
+    </section>
+
+    <footer>
+      <p>长路漫漫离家，闲谈梦落花 · kami</p>
+    </footer>
+  </div>
 </body>
 </html>
