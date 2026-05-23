@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!-- ==================================================================
+     HERMES AGENT 更新日志 · parchment design system
+     2026年5月 近两周更新总结
+     ================================================================== -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Hermes Agent · 2026年5月 更新日志</title>
+<meta name="author" content="Hermes Agent">
+<meta name="description" content="Hermes Agent 近两周更新总结，包含新功能、Bug 修复和安全增强">
+<meta name="keywords" content="Hermes Agent, 更新日志, AI Agent, Telegram, Portal, 安全">
+<meta name="generator" content="Kami">
+<style>
+  /* Regular weight */
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("../fonts/TsangerJinKai02-W04.ttf") format("truetype"),
+       url("https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* Bold weight - W05 for all bold variants */
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("../fonts/TsangerJinKai02-W05.ttf") format("truetype"),
+       url("https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W05.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 22mm 22mm 22mm;
+    background: #f5f4ed;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment: #f5f4ed;
+    --ivory:     #faf9f5;
+    --near-black:#141413;
+    --dark-warm: #3d3d3a;
+    --olive:     #504e49;
+    --stone:     #6b6a64;
+    --brand:     #1B365D;
+    --border:    #e8e6dc;
+    --border-soft:#e5e3d8;
+    --tag-bg:    #E4ECF5;
+    --serif: "TsangerJinKai02", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", Georgia, serif;
+    --sans: var(--serif);
+  }
+
+  html, body { background: var(--parchment); }
+
+  @media screen {
+    body { max-width: 210mm; margin: 0 auto; padding: 20mm 22mm; }
+  }
+
+  body {
+    color: var(--near-black);
+    font-family: var(--serif);
+    font-size: 10.5pt;
+    line-height: 1.55;
+    letter-spacing: 0.3pt;
+    widows: 3;
+    orphans: 3;
+  }
+
+  strong { font-weight: 500; }
+  .hl { color: var(--brand); font-weight: 500; }
+
+  /* ========== VERSION HEADER ========== */
+  .version-header {
+    text-align: center;
+    margin-bottom: 24pt;
+    padding-bottom: 16pt;
+    border-bottom: 0.5pt solid var(--border);
+  }
+  .version-logo {
+    font-family: var(--serif);
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--brand);
+    letter-spacing: 1pt;
+    margin-bottom: 8pt;
+  }
+  .version-title {
+    font-family: var(--serif);
+    font-size: 28pt;
+    font-weight: 500;
+    color: var(--near-black);
+    line-height: 1.2;
+    margin-bottom: 6pt;
+  }
+  .version-tagline {
+    font-size: 12pt;
+    color: var(--olive);
+    line-height: 1.5;
+  }
+  .version-date {
+    font-size: 10pt;
+    color: var(--stone);
+    margin-top: 6pt;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ========== SECTIONS ========== */
+  h2 {
+    font-family: var(--serif);
+    font-size: 16pt;
+    font-weight: 500;
+    color: var(--near-black);
+    margin: 20pt 0 8pt 0;
+    border-left: 2.5pt solid var(--brand);
+    border-radius: 1.5pt;
+    padding-left: 8pt;
+    break-after: avoid;
+  }
+
+  h3 {
+    font-size: 13pt;
+    font-weight: 500;
+    color: var(--dark-warm);
+    margin: 14pt 0 4pt 0;
+    break-after: avoid;
+  }
+
+  p { margin: 0 0 8pt 0; line-height: 1.55; widows: 2; orphans: 2; }
+
+  /* ========== CHANGE LIST ========== */
+  ol.changes {
+    margin: 6pt 0 14pt 0;
+    padding-left: 24pt;
+    line-height: 1.55;
+  }
+  ol.changes li {
+    margin-bottom: 4pt;
+  }
+  ol.changes li::marker {
+    color: var(--brand);
+    font-weight: 500;
+  }
+
+  /* ========== TAG ========== */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--brand);
+    font-size: 9pt;
+    font-weight: 500;
+    padding: 1pt 6pt;
+    border-radius: 3pt;
+    margin-right: 3pt;
+  }
+  .tag.breaking {
+    background: #f0e0d8;
+    color: #8b4513;
+  }
+  .tag.feature {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  .tag.security {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  /* ========== CALLOUT ========== */
+  .callout {
+    background: var(--ivory);
+    border-left: 2pt solid var(--brand);
+    padding: 8pt 14pt;
+    border-radius: 3pt;
+    margin: 12pt 0;
+    line-height: 1.55;
+    break-inside: avoid;
+  }
+
+  /* ========== STATS ========== */
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 16pt 0;
+    padding: 12pt 0;
+    border-top: 0.5pt solid var(--border);
+    border-bottom: 0.5pt solid var(--border);
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 24pt;
+    font-weight: 500;
+    color: var(--brand);
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-size: 9pt;
+    color: var(--stone);
+    margin-top: 2pt;
+  }
+
+  /* ========== THANKS ========== */
+  .thanks {
+    margin-top: 16pt;
+    padding: 10pt 14pt;
+    background: var(--ivory);
+    border-left: 1.4pt solid var(--brand);
+    border-radius: 4pt;
+    font-size: 10pt;
+    line-height: 1.55;
+    break-inside: avoid;
+  }
+  .thanks-label {
+    font-size: 9pt;
+    color: var(--brand);
+    letter-spacing: 0.5pt;
+    text-transform: uppercase;
+    margin-bottom: 4pt;
+  }
+
+  /* ========== FOOTER ========== */
+  .changelog-footer {
+    margin-top: 20pt;
+    padding-top: 8pt;
+    border-top: 0.3pt dotted var(--border);
+    font-size: 9pt;
+    color: var(--stone);
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== VERSION HEADER ========== -->
+<div class="version-header">
+  <div class="version-logo">Hermes Agent</div>
+  <div class="version-title">2026年5月 近两周更新</div>
+  <div class="version-tagline">平台稳定性增强 · 安全加固 · 新功能上线</div>
+  <div class="version-date">2026年5月10日 - 2026年5月23日</div>
+</div>
+
+<!-- ========== STATS ========== -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-number">50+</div>
+    <div class="stat-label">次提交</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">12</div>
+    <div class="stat-label">项新功能</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">25+</div>
+    <div class="stat-label">个修复</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">8</div>
+    <div class="stat-label">个安全补丁</div>
+  </div>
+</div>
+
+<!-- ========== 更新日志 (中文) ========== -->
+<h2>更新日志</h2>
+
+<h3>新功能</h3>
+<ol class="changes">
+  <li><span class="tag feature">Feature</span> <strong>Telegram 状态消息原地编辑</strong> - 不再追加新消息，直接更新原消息，减少聊天噪音</li>
+  <li><span class="tag feature">Feature</span> <strong>Nous Portal 一键设置</strong> - 集成 Portal 状态 CLI 和 Nous 标记，简化配置流程</li>
+  <li><span class="tag feature">Feature</span> <strong>Webhook 安全增强</strong> - 动态路由重载时强制 INSECURE_NO_AUTH 安全检查</li>
+  <li><span class="tag feature">Feature</span> <strong>Skills Guard 改进</strong> - 危险操作时解释 --force 被拒绝的原因，提升透明度</li>
+</ol>
+
+<h3>Bug 修复</h3>
+<ol class="changes">
+  <li><strong>审批系统</strong> - 超时/拒绝时固定"沉默不是同意"契约，防止误操作</li>
+  <li><strong>内存保护</strong> - 防止外部漂移影响 MEMORY.md/USER.md，确保持久化数据稳定</li>
+  <li><strong>XAI OAuth</strong> - WKE 消歧义器修复，解决认证路径的边界问题</li>
+  <li><strong>API 调用</strong> - 中断时延迟 client.close() 到工作线程，避免资源泄露</li>
+  <li><strong>TLS/FD 处理</strong> - 仅关闭连接不释放文件描述符，修复连接池问题</li>
+  <li><strong>QQBot 平台</strong> - 多项稳定性改进：SILK 魔术字节、附件文件名、op 7/9 处理</li>
+  <li><strong>Gateway 运行时配置</strong> - 环境变量模板扩展和 key_env 回退解析修复</li>
+  <li><strong>Agent 回退模型</strong> - 规范化失败时记录警告而不是静默吞掉</li>
+</ol>
+
+<h3>安全增强</h3>
+<ol class="changes">
+  <li><span class="tag security">Security</span> <strong>文件安全</strong> - 阻止读取凭证存储文件（.env, mcp-tokens/, webhook secrets）</li>
+  <li><span class="tag security">Security</span> <strong>插件安全</strong> - 防止路径遍历和 RCE 攻击，应用 truthy 环境语义</li>
+  <li><span class="tag security">Security</span> <strong>网关认证</strong> - key_env 回退解析修复，确保认证失败时正确降级</li>
+  <li><span class="tag security">Security</span> <strong>Skills Guard</strong> - 修正判决逻辑并强制 --force 限制，防止危险操作</li>
+</ol>
+
+<h3>平台改进</h3>
+<ol class="changes">
+  <li><strong>WhatsApp</strong> - 跨 JID/LID 别名保留配对审批，解决设备切换问题</li>
+  <li><strong>Gateway Windows</strong> - .cmd 脚本原子写入，防止启动脚本损坏</li>
+  <li><strong>Telegram</strong> - 分离群组上下文处理，提升多群管理稳定性</li>
+  <li><strong>OpenCode Go</strong> - 暴露 Kimi reasoning_effort 控制，匹配 KimiProfile 形状</li>
+</ol>
+
+<!-- ========== CALLOUT ========== -->
+<div class="callout">
+  <strong>重要提示：</strong>本次更新包含多项安全增强，建议所有用户升级到最新版本。特别是文件安全和插件安全的改进，可以有效防止潜在的凭证泄露和代码注入风险。
+</div>
+
+<!-- ========== THANKS ========== -->
+<div class="thanks">
+  <div class="thanks-label">致谢</div>
+  感谢所有贡献者的辛勤工作，包括安全研究员、测试人员和社区成员的反馈。特别感谢 tw93 的 Waza 和 Kami skills 系统，为 AI 工程实践提供了优秀的工具框架。
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div class="changelog-footer">
+  Hermes Agent - 开源 AI 助手平台<br>
+  https://github.com/hermes-agent/hermes-agent
+</div>
+
+</body>
+</html>
