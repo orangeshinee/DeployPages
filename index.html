@@ -120,45 +120,26 @@
   </div>
 
   <div class="grid" id="grid">
-    <div class="loading">LOADING...</div>
+    <a class="card" href="./claude-code-intro/">
+      <div class="card-arrow">→</div>
+      <div class="card-name">Claude Code Intro</div>
+      <div class="card-path">/claude-code-intro/</div>
+    </a>
+    <a class="card" href="./deepseek-v4/">
+      <div class="card-arrow">→</div>
+      <div class="card-name">Deepseek V4</div>
+      <div class="card-path">/deepseek-v4/</div>
+    </a>
+    <a class="card" href="./hermes-changelog/">
+      <div class="card-arrow">→</div>
+      <div class="card-name">Hermes Changelog</div>
+      <div class="card-path">/hermes-changelog/</div>
+    </a>
+    <a class="card" href="./linux-beginner/">
+      <div class="card-arrow">→</div>
+      <div class="card-name">Linux Beginner</div>
+      <div class="card-path">/linux-beginner/</div>
+    </a>
   </div>
-
-  <div class="footer">DEPLOYED ON CLOUDFLARE PAGES · LIVE</div>
-
-  <script>
-    async function loadProjects() {
-      const grid = document.getElementById('grid');
-      try {
-        // Fetch directory listing from GitHub API
-        const resp = await fetch(
-          'https://api.github.com/repos/orangeshinee/DeployPages/contents/',
-          { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-        );
-        if (!resp.ok) throw new Error('API error');
-        const items = await resp.json();
-
-        const dirs = items
-          .filter(item => item.type === 'dir' && !item.name.startsWith('.'))
-          .sort((a, b) => a.name.localeCompare(b.name));
-
-        if (dirs.length === 0) {
-          grid.innerHTML = '<div class="loading">NO PROJECTS YET</div>';
-          return;
-        }
-
-        const base = 'https://hermespages.shine-ee-zhang-product.workers.dev/';
-        grid.innerHTML = dirs.map(d => `
-          <a class="card" href="${base}${d.name}/">
-            <div class="card-arrow">→</div>
-            <div class="card-name">${d.name.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</div>
-            <div class="card-path">/${d.name}/</div>
-          </a>
-        `).join('');
-      } catch (e) {
-        grid.innerHTML = '<div class="error">FAILED TO LOAD PROJECTS</div>';
-      }
-    }
-    loadProjects();
-  </script>
 </body>
 </html>
