@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>吃瓜故事梳理</title>
+  <style>
+    :root {
+      --paper: #f7f2e8;
+      --ink: #191714;
+      --muted: #6e665c;
+      --line: #d7cbbc;
+      --panel: #fffaf0;
+      --coal: #26231f;
+      --red: #b64235;
+      --green: #2f7564;
+      --gold: #a46d20;
+      --blue: #355d7b;
+      --shadow: 0 18px 45px rgba(45, 35, 22, .13);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(180, 66, 53, .14), transparent 28rem),
+        radial-gradient(circle at 90% 16%, rgba(47, 117, 100, .15), transparent 24rem),
+        linear-gradient(180deg, #fbf7ef 0%, var(--paper) 46%, #eee5d7 100%);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.72;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 240, .84);
+      backdrop-filter: blur(18px);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+      gap: 42px;
+      align-items: end;
+      padding: 54px 0 34px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.35rem, 6vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    .dek {
+      margin: 22px 0 0;
+      max-width: 760px;
+      font-size: 1.08rem;
+      color: #3a352f;
+    }
+
+    .notice {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--red);
+      background: rgba(255, 250, 240, .9);
+      box-shadow: var(--shadow);
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--red);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 0 28px;
+    }
+
+    nav a {
+      color: var(--coal);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, .72);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
+    main { padding: 34px 0 70px; }
+
+    section {
+      margin: 0 0 34px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 250, 240, .88);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(45, 35, 22, .07);
+    }
+
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.13rem;
+      line-height: 1.35;
+    }
+
+    .card p { margin: 0; color: #332e28; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: .84rem;
+      color: var(--muted);
+      background: #fffdf7;
+      white-space: nowrap;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 14px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, .9);
+      border-radius: 8px;
+    }
+
+    .date {
+      color: var(--red);
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .event h3 {
+      margin: 0 0 7px;
+      line-height: 1.35;
+      font-size: 1.08rem;
+    }
+
+    .event p { margin: 0; color: #332e28; }
+
+    .evidence {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 11px;
+    }
+
+    .ev {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .78rem;
+      color: #fffaf0;
+      background: var(--coal);
+      border-radius: 5px;
+      padding: 2px 6px;
+    }
+
+    .story {
+      columns: 2 360px;
+      column-gap: 34px;
+      padding: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .story p {
+      break-inside: avoid;
+      margin: 0 0 1em;
+    }
+
+    .quote {
+      margin: 0;
+      border-left: 4px solid var(--green);
+      padding: 12px 16px;
+      background: rgba(47, 117, 100, .08);
+      color: #24483f;
+      border-radius: 0 8px 8px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 250, 240, .9);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #ece0cf;
+      color: #31291f;
+      font-size: .92rem;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .status {
+      display: inline-block;
+      min-width: 58px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 2px 8px;
+      color: #fff;
+      font-weight: 800;
+      font-size: .78rem;
+    }
+
+    .fact { background: var(--green); }
+    .claim { background: var(--gold); }
+    .infer { background: var(--blue); }
+
+    footer {
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 22px 0 42px;
+      font-size: .92rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; }
+      .span-4, .span-6, .span-8 { grid-column: span 12; }
+      .event { grid-template-columns: 1fr; gap: 8px; }
+      .story { padding: 20px; }
+      th, td { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <h1>吃瓜故事梳理</h1>
+          <p class="dek">基于当前目录 167 张微信截图的 OCR 识别与人工抽样复核整理。为了减少扩散风险，本文统一用代号描述人物，只还原截图中能看出的关系、时间线和各方说法。</p>
+        </div>
+        <aside class="notice">
+          <strong>阅读口径</strong>
+          截图里有大量情绪性辱骂和群友揣测。本文把“可见聊天记录”“当事人自述”“群内推断”分开写；涉及健康、怀孕、报警、金钱等内容均按截图所示转述，不视为法律或医学事实。
+        </aside>
+      </div>
+      <nav>
+        <a href="#summary">一页看懂</a>
+        <a href="#people">人物关系</a>
+        <a href="#timeline">时间线</a>
+        <a href="#story">完整故事</a>
+        <a href="#evidence">证据强度</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="summary">
+      <div class="section-title">
+        <h2>一页看懂</h2>
+        <span>核心冲突</span>
+      </div>
+      <div class="grid">
+        <article class="card span-4">
+          <h3>主线</h3>
+          <p>多个男方在女主手机、聊天记录和群聊互证中发现：他们与女主的恋爱、同居、暧昧或奔现时间存在重叠。最早可追到 2023/2024，集中爆发在 2026 年 1 月至 6 月。</p>
+        </article>
+        <article class="card span-4">
+          <h3>导火索</h3>
+          <p>男方之一与女主闹矛盾后摔坏手机，后续赔偿、修手机并看到手机里的聊天内容，由此联系到其他男方，群聊开始拼时间线。</p>
+        </article>
+        <article class="card span-4">
+          <h3>结论</h3>
+          <p>从截图看，不是简单“刚分手无缝衔接”，而是多段关系在同一时间窗口内交叉：有人同居，有人网恋，有人线下过夜，有人转钱买东西，还有人被拉黑。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="section-title">
+        <h2>人物关系</h2>
+        <span>代号版</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>代号</th>
+            <th>关系定位</th>
+            <th>截图里出现的关键信息</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>女主</strong></td>
+            <td>所有关系的中心人物</td>
+            <td>2005 年生，浙江金华一带生活/工作，后称要回四川老家。多名男方称她在关系中隐瞒其他对象、拉黑、要求转钱或礼物，并用“不远嫁、结婚、彩礼”等话术推进关系。</td>
+          </tr>
+          <tr>
+            <td><strong>男一</strong></td>
+            <td>最早被梳理出来的前任</td>
+            <td>称 2024 年开始谈，2025 年 9 月到 2026 年 1 月继续谈；期间给女主花约 4000-5000 元。1 月女主变冷淡并拉黑。</td>
+          </tr>
+          <tr>
+            <td><strong>男二</strong></td>
+            <td>1 月左右确认关系的人</td>
+            <td>女主多次喊男二奔现，但男二觉得不真诚没有去。后来在群聊中发现自己可能与男一、男三时间重叠。</td>
+          </tr>
+          <tr>
+            <td><strong>男三 / 小白</strong></td>
+            <td>线下见面、同居/过夜较多的人</td>
+            <td>12 月 8 日见面，2 月 23 日去女主家住，称后来谈到现在并分手；摔手机、赔 3300、修手机 1000 多，看到聊天记录后爆发。</td>
+          </tr>
+          <tr>
+            <td><strong>9 号 / 电摩男</strong></td>
+            <td>被多次提到的旧关系</td>
+            <td>被称为开九号/电摩店相关的人，女主在与他人谈时仍频繁提起，疑似关系较深。</td>
+          </tr>
+          <tr>
+            <td><strong>江苏/杭州第一任、陕西男、山东/山西男等</strong></td>
+            <td>更早或旁支关系</td>
+            <td>群聊中有人称女主第一任在江苏徐州/杭州工作，另有给她点饭、转钱、买棉袜、每月转钱等对象。部分属于群内转述，证据强度较弱。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="timeline">
+      <div class="section-title">
+        <h2>时间线</h2>
+        <span>按截图可见线索排序</span>
+      </div>
+      <div class="timeline">
+        <article class="event">
+          <div class="date">2023 年 8 月</div>
+          <div>
+            <h3>更早认识线索出现</h3>
+            <p>有男方自称 2023 年 8 月认识女主、2024 年 6 月谈过；另有人提到 2023/2024 年在金华谈过半年、曾有怀孕/药流相关说法。</p>
+            <div class="evidence"><span class="ev">017</span><span class="ev">018</span><span class="ev">087</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2024 年</div>
+          <div>
+            <h3>男一开始与女主交往</h3>
+            <p>开篇笔记称男一从 2024 年开始和女主谈，2024 年期间谈了几个月。另有截图称 2024 年没谈时，也有人给女主转 1000 元交房租。</p>
+            <div class="evidence"><span class="ev">001</span><span class="ev">038</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2025 年 9 月 - 2026 年 1 月</div>
+          <div>
+            <h3>男一继续交往并投入金钱</h3>
+            <p>男一称这段时间与女主在一起，花费约 4000-5000 元，后续有人补充“差不多一万纯现”等说法。到 2026 年 1 月，女主逐渐冷淡并拉黑男一。</p>
+            <div class="evidence"><span class="ev">001</span><span class="ev">012</span><span class="ev">029</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2025 年 12 月</div>
+          <div>
+            <h3>男三线下见面，另一条关系启动</h3>
+            <p>男三称自己 12 月 8 日与女主见面，9/10 日左右回去。另有聊天提到 12 月 26 日左右认识新对象，后续与 1 月、2 月时间线交叉。</p>
+            <div class="evidence"><span class="ev">016</span><span class="ev">017</span><span class="ev">137</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2026 年 1 月</div>
+          <div>
+            <h3>男一退场，男二/男三同时出现</h3>
+            <p>开篇整理称：男二此前背着男一已与女主有过接触，所以 1 月直接确定关系；男三也在此时背着男一、男二发展。聊天中男一发现“1 月份第一次见面”与自己被拉黑时间对上。</p>
+            <div class="evidence"><span class="ev">001</span><span class="ev">011</span><span class="ev">012</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2026 年 2 月 9 日 - 23 日</div>
+          <div>
+            <h3>关键重叠期被对上</h3>
+            <p>一名男方说 2 月 9 日闹离开，2 月 16 日发现对方短信；另一名男方称 2 月 23 日去女主家住了几晚。双方对上后意识到：一个人在冷淡/闹掰，另一个人已经线下到女主家。</p>
+            <div class="evidence"><span class="ev">116</span><span class="ev">138</span><span class="ev">139</span><span class="ev">142</span><span class="ev">152</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2026 年 2 月 - 3 月</div>
+          <div>
+            <h3>“同居旁边还在聊别人”成为实锤感来源</h3>
+            <p>男三称自己 2 月 23 日开始去女主家住，谈到分手；期间“睡在她旁边都能跟别人聊得热火朝天”。另一名男方说自己没分手时，对方已经去找男三。</p>
+            <div class="evidence"><span class="ev">139</span><span class="ev">141</span><span class="ev">142</span><span class="ev">150</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2026 年春季</div>
+          <div>
+            <h3>怀孕、打掉、费用争议</h3>
+            <p>截图中有人问女主是否怀孕，并提到以前有过药流；后段一名男方自述“她怀孕了，是我的”“打掉了，我出的钱”。这部分属于当事人口述，截图没有医学证明。</p>
+            <div class="evidence"><span class="ev">017</span><span class="ev">146</span><span class="ev">167</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2026 年 6 月 1 日前后</div>
+          <div>
+            <h3>手机被翻出更多联系人</h3>
+            <p>有人发现 6 月 1 日晚上 9 点多还有通话/联系记录，于是打电话核实。对方男生被问“知不知道女朋友和别人谈”，表示不想知道并挂断。</p>
+            <div class="evidence"><span class="ev">120</span><span class="ev">123</span><span class="ev">124</span><span class="ev">125</span></div>
+          </div>
+        </article>
+
+        <article class="event">
+          <div class="date">2026 年 6 月 3 日</div>
+          <div>
+            <h3>截图整理成群瓜并准备曝光</h3>
+            <p>群聊在 6 月 3 日集中整理，男方们互相加好友、核对聊天记录和线下时间。后续有人表示要“整理思路发网上曝光”，并总结“同时聊很多个”“没分提前找好”。</p>
+            <div class="evidence"><span class="ev">001</span><span class="ev">150</span><span class="ev">151</span><span class="ev">161</span><span class="ev">162</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="section-title">
+        <h2>完整故事</h2>
+        <span>整理版</span>
+      </div>
+      <div class="story">
+        <p>这个瓜的爆点，不是某一段恋爱分手后立刻无缝衔接，而是多个男方在同一天把时间线拼起来后发现：他们以为自己处在“单独恋爱”“刚分手”“异地误会”或“普通暧昧”的位置，其实可能只是女主众多并行关系中的一个节点。</p>
+
+        <p>最早被梳理出来的是男一。按开篇笔记，男一从 2024 年就开始和女主谈，2024 年谈了几个月，2025 年 9 月又谈到 2026 年 1 月。男一自述期间给女主花了约 4000-5000 元。到 2026 年 1 月，女主对他变冷淡，最后把联系方式拉黑。</p>
+
+        <p>男一原本以为这是普通分手，直到后续对上聊天记录，才发现 1 月份女主与男二、男三的线都已经在动。男二这边，女主经常喊他奔现，让他去家里睡，但男二觉得对方不真诚，所以没有真正线下见面。男三则是线下进展更深的一位，他在 2025 年 12 月已经与女主见面，2026 年 2 月 23 日又去女主家住了几晚，后来谈到分手。</p>
+
+        <p>真正把瓜点炸开的，是男三和女主闹矛盾后的手机事件。男三说自己把女主手机摔坏，被派出所关了一天，赔了 3300 元，又花 1000 多元把手机修好。手机修好后，他看到了里面的聊天记录，才发现自己可能一直被蒙在鼓里。于是他开始联系其他男方，大家在群聊里对时间、对昵称、对礼物、对转账、对见面地点。</p>
+
+        <p>群聊越对越离谱。有人说自己和女主 12 月 8 日见面；有人说 1 月被拉黑；有人说 2 月 9 日闹离开；有人拿出 2 月 16 日的短信；男三则说 2 月 23 日就去了女主家，还睡在她旁边。另一个男方听到后才反应过来：自己一直以为是自身敏感、异地沟通不顺，原来那段时间女主已经在和别人线下推进。</p>
+
+        <p>后面又牵出更多旁支：9 号/电摩男、手机厅男友、跑外卖给她交房租的人、江苏/杭州第一任、陕西男、给她点饭买棉袜的人、疑似每月转钱的人。部分只是群内转述，但至少能看出，当事人们认为女主过去和同时期的关系链非常复杂，而且很多人都不知道彼此存在。</p>
+
+        <p>钱也是贯穿全程的冲突点。男一说花了几千；有人说买过苹果平板 Air，花了 5500；有人说女主没钱交房租时转了 1000；有人说借过 2000；男三说赔手机、修手机花了 4000 多。群里不少人的共同情绪是：自己一边花钱、投入、幻想结婚，另一边女主可能还在和别人暧昧或见面。</p>
+
+        <p>感情话术也被多个男方对上。有人说女主谈结婚、说家里不让远嫁、提彩礼，外地彩礼可能从 10 万提到 20 万；另一个人也说女主类似地讲过家里不让远嫁、爸妈哥哥管不住之类的话。男方们因此推断，女主可能不是临时变心，而是在不同对象之间反复使用相近的说法。</p>
+
+        <p>更敏感的部分是怀孕。截图中，一名男方提到女主前几天说去医院检查，他问是不是怀孕，对方回复“都搞过啊”，另有人说她以前怀孕过、有过药流。后段另一个男方直接说“她还怀孕了，是我的”“打掉了，我出的钱”。这些内容都是聊天自述，不能当成医学事实，但它解释了为什么群里男方情绪会从吃瓜变成破防。</p>
+
+        <p>到 6 月 1 日前后，男三继续翻手机，发现新的通话/联系人，又打电话核实。有一个男的被问到是否知道“女朋友和别人谈”，直接说不想知道并挂断。男三因此意识到，自己看到的可能还不是全部。</p>
+
+        <p>最后，6 月 3 日这批截图被整理成群瓜。群里有人总结得很直白：这些都是谈期间找别的男人聊的；同时聊很多个；他们几个人不是无缝衔接，真正的问题是“看手机才知道”。男三则说自己是夹在中间、见面最多、睡得最多，却一直没发现的人。</p>
+
+        <p>所以这份瓜的核心故事可以概括为：女主在多个时间段与多个男方维持恋爱、暧昧、同居或金钱往来；男方们原本各自只看到自己的局部，直到一次手机事件把聊天记录翻出来，大家互相核对，才拼出一条从 2024 延续到 2026 年 6 月的复杂关系网。</p>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="section-title">
+        <h2>证据强度</h2>
+        <span>避免把瓜写成定罪书</span>
+      </div>
+      <div class="grid">
+        <article class="card span-4">
+          <h3><span class="status fact">较强</span> 可见聊天记录</h3>
+          <p>例如开篇笔记、男方之间直接对话、2 月 23 日住女主家、6 月 3 日整理截图等。这些能证明“截图中有人这样说过”。</p>
+          <div class="chips"><span class="chip">001</span><span class="chip">139</span><span class="chip">142</span><span class="chip">161</span></div>
+        </article>
+        <article class="card span-4">
+          <h3><span class="status claim">中等</span> 当事人口述</h3>
+          <p>例如花钱金额、怀孕/打掉、赔手机、报警、同居细节。它们来自聊天中的当事人自述，可信度高于群友猜测，但仍缺少外部凭证。</p>
+          <div class="chips"><span class="chip">020</span><span class="chip">031</span><span class="chip">085</span><span class="chip">146</span></div>
+        </article>
+        <article class="card span-4">
+          <h3><span class="status infer">较弱</span> 群内推断</h3>
+          <p>例如“第一任在哪里”“某人是不是给钱点饭”“究竟睡过多少人”等，多为回忆、转述或情绪判断。报告只作为关系网线索，不当作确定事实。</p>
+          <div class="chips"><span class="chip">055</span><span class="chip">058</span><span class="chip">060</span><span class="chip">127</span></div>
+        </article>
+        <article class="card span-12">
+          <h3>原始处理文件</h3>
+          <p>OCR 原文保存在 <code>ocr_results.jsonl</code>，清理后的可读文本保存在 <code>ocr_compact.md</code>。截图编号与文件排序一致，例如 <code>001</code> 对应 <code>微信图片_20260603151907.jpg</code>。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      本页生成于 2026-06-03。内容仅为本目录截图材料的结构化整理，人物均已代号化。
+    </div>
+  </footer>
+</body>
+</html>
