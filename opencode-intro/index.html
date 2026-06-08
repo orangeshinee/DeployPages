@@ -400,13 +400,16 @@
             font-family="inherit" text-anchor="middle">Agent 时代：AI 从动嘴到动手</text>
 
       <!-- ── Label: 三个阶段 ── -->
-      <text x="56" y="360" fill="#504e49" font-size="9" font-weight="500" font-family="inherit">三个阶段：</text>
-      <text x="148" y="360" fill="#6b6a64" font-size="9" font-family="inherit">2022-23</text>
-      <text x="148" y="376" fill="#6b6a64" font-size="9" font-family="inherit">文本+图像AI诞生</text>
-      <text x="328" y="360" fill="#6b6a64" font-size="9" font-family="inherit">2024</text>
-      <text x="328" y="376" fill="#6b6a64" font-size="9" font-family="inherit">视频生成元年</text>
-      <text x="540" y="360" fill="#1B365D" font-size="9" font-weight="500" font-family="inherit">2025-26</text>
-      <text x="540" y="376" fill="#1B365D" font-size="9" font-weight="500" font-family="inherit">Agent 动手干活了</text>
+      <text x="56" y="355" fill="#504e49" font-size="9" font-weight="500" font-family="inherit">三个阶段：</text>
+      <text x="148" y="355" fill="#6b6a64" font-size="9" font-family="inherit">2022-23</text>
+      <text x="148" y="372" fill="#6b6a64" font-size="9" font-family="inherit">ChatGPT · DALL·E · Midjourney</text>
+      <text x="148" y="389" fill="#504e49" font-size="9" font-family="inherit">豆包 APP · Kimi Chat 发布</text>
+      <text x="328" y="355" fill="#6b6a64" font-size="9" font-family="inherit">2024</text>
+      <text x="328" y="372" fill="#6b6a64" font-size="9" font-family="inherit">Sora · Claude 3 · 视频元年</text>
+      <text x="328" y="389" fill="#504e49" font-size="9" font-family="inherit">MiniMax · 豆包大模型发布</text>
+      <text x="540" y="355" fill="#1B365D" font-size="9" font-weight="500" font-family="inherit">2025-26</text>
+      <text x="540" y="372" fill="#1B365D" font-size="9" font-weight="500" font-family="inherit">DeepSeek R1 · OpenCode</text>
+      <text x="540" y="389" fill="#1B365D" font-size="9" font-weight="500" font-family="inherit">Agent 时代 · 动手干活</text>
     </svg>
   </div>
 
@@ -512,31 +515,71 @@
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 06 · OpenCode 是什么 ═══════════════════ -->
+<!-- ═══════════════════ Slide 06 · 模型 vs 产品 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">06 · 认识 OpenCode</span>
-  <h2>OpenCode 不是编程工具，是一个能帮你操作文件的 AI 助手</h2>
+  <span class="eyebrow">06 · 概念澄清</span>
+  <h2>模型 ≠ 产品。一个是引擎，一个是车——拆开看就清楚了</h2>
 
-  <div class="c2">
-    <div>
-      <h3>它是什么</h3>
-      <p class="mb">一个运行在电脑终端的 AI。给它一个文件夹，它会自己读文档、改文件、然后告诉你做了什么。不挑模型——可以用 DeepSeek、Claude、GPT 任意一种「大脑」。免费、开源。</p>
-    </div>
-    <div>
-      <h3>为什么同事觉得它是编程工具</h3>
-      <p class="mb">因为它运行在「终端」里，终端看起来像黑客电影。但实际上，你只需要用自然语言打字告诉它要什么——不需要会写一行代码。</p>
-    </div>
-  </div>
+  <table class="t2x2">
+    <tr>
+      <td>
+        <div class="mt"><span class="ml">M</span>模型（Model）</div>
+        <p class="mb">AI 的「大脑引擎」。GPT-5.5、Claude 4、DeepSeek V3 都是模型。你没法直接跟模型聊天——它就是一个算法，没有界面。模型负责理解和生成，但需要有人把它包装成产品才能用。</p>
+      </td>
+      <td>
+        <div class="mt"><span class="ml">P</span>产品（Product）</div>
+        <p class="mb">用户实际面对的界面。ChatGPT 是产品，它底层用 GPT 模型；Kimi 是产品，它底层用自己的模型。产品决定你怎么跟 AI 交互（打字、语音、文件上传），模型决定 AI 聪不聪明。</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="mt"><span class="ml">B</span>类比</div>
+        <p class="mb">模型是发动机，产品是整辆车。法拉利和五菱宏观的发动机不同，但都能让你从 A 到 B。同样，ChatGPT 和 Kimi 用的底层模型不同，但都能帮你写东西——体验和边界不同罢了。</p>
+      </td>
+      <td>
+        <div class="mt"><span class="ml">·</span>为什么重要</div>
+        <p class="mb">OpenCode 不挑发动机——DeepSeek、Claude、GPT 随便换。它像一个可以装不同引擎的车架，你选什么引擎，它都能跑。这也是它和 ChatGPT 这类固定产品的根本区别。</p>
+      </td>
+    </tr>
+  </table>
 
-  <div class="mc">打个比方：DeepSeek 网页版像一个你只能发微信请教的专家。OpenCode 像一个坐在你工位旁边、能直接帮你翻文件和改文档的实习生。</div>
+  <div class="co">OpenCode = 车架（Agent 系统） + 任意发动机（模型）</div>
 
   <div class="page-num">06</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 05 · 工具对比 ═══════════════════ -->
+<!-- ═══════════════════ Slide 07 · OpenCode 是什么 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">07 · 工具对比</span>
+  <span class="eyebrow">07 · 认识 OpenCode</span>
+  <h2>OpenCode 不是编程工具，是一个能帮你操作文件的 AI 助手</h2>
+
+  <div class="c2">
+    <div>
+      <h3>它是什么</h3>
+      <p class="mb">一个 AI Agent 系统。给它一个文件夹，它会自己读文档、改文件、然后告诉你做了什么。不挑模型——可以用 DeepSeek、Claude、GPT 任意一种「大脑」。免费、开源。</p>
+    </div>
+    <div>
+      <h3>三种使用方式</h3>
+      <p class="mi"><strong>终端（TUI）</strong>：最经典的模式，打字交互，适合习惯命令行的同学。</p>
+      <p class="mi"><strong>网页界面（Web）</strong>：<code>opencode web</code> 一键启动浏览器访问，图形界面，不用碰终端就能用。</p>
+      <p class="mi"><strong>桌面应用（Desktop）</strong>：macOS / Windows / Linux 都有安装包，官网 opencode.ai 直接下载。</p>
+    </div>
+  </div>
+
+  <div style="background:var(--brand-tint);border:1.5px dashed var(--brand);border-radius:4pt;padding:16pt;text-align:center;color:var(--brand);font-size:11pt;margin-top:6pt">
+    🖼️ [图片占位符：OpenCode 各界面截图 — 终端 / Web / 桌面]
+  </div>
+
+  <div class="mc">打个比方：DeepSeek 网页版像一个你只能发微信请教的专家。OpenCode 像一个坐在你工位旁边、能直接帮你翻文件和改文档的实习生。</div>
+
+  <div class="page-num">07</div>
+  <div class="footer-mark">OpenCode 入门</div>
+</section>
+
+<!-- ═══════════════════ Slide 08 · 工具对比 ═══════════════════ -->
+<section class="slide">
+  <span class="eyebrow">08 · 工具对比</span>
   <h2>五款 AI 工具横向对比，只有 OpenCode 同时满足：免费、不挑模型、能动手干活</h2>
 
   <table class="data">
@@ -574,13 +617,13 @@
 
   <div class="mc">结论：DeepSeek / ChatGPT 像电话咨询，OpenCode 像上门服务。你想要哪个？</div>
 
-  <div class="page-num">07</div>
+  <div class="page-num">08</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 06 · 工作原理 ═══════════════════ -->
+<!-- ═══════════════════ Slide 09 · 工作原理 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">08 · 工作原理</span>
+  <span class="eyebrow">09 · 工作原理</span>
   <h2>打开终端、描述任务、它自己翻文件干活——就这三步</h2>
 
   <p class="lead">你不需要理解它是怎么调 API 的，你只需要知道：</p>
@@ -599,55 +642,67 @@
   <div class="mc">整个过程你只需要看和判断。你的角色从「动手的人」变成「审核的人」。</div>
   <div class="co">本质变化：AI 替你执行，你保留判断权</div>
 
-  <div class="page-num">08</div>
+  <div class="page-num">09</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 07 · 案例一：SQL ═══════════════════ -->
+<!-- ═══════════════════ Slide 10 · 案例一：SQL ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">09 · 案例</span>
+  <span class="eyebrow">10 · 案例</span>
   <h2>案例一：把业务需求扔给它，三分钟拿到 SQL 和逐行解释</h2>
 
   <p class="lead">做数字化看板的日常：</p>
   <p class="mb">业务方发来「我想看华南区过去三个月退货率按品类排名」。把这个描述告诉 OpenCode，它去翻你的数据库表结构，生成 SQL，同时用注释解释每一步的逻辑。你只需要审核对不对——而不是从零开始拼 JOIN。</p>
 
+  <div style="background:var(--brand-tint);border:1.5px dashed var(--brand);border-radius:4pt;padding:12pt;text-align:center;color:var(--brand);font-size:10pt;margin-bottom:8pt">
+    🖼️ [图片占位符：SQL 生成前后对比截图 — 输入的业务需求 vs OpenCode 输出的 SQL]
+  </div>
+
   <div class="co">关键转变：你的角色从「写 SQL 的人」变成了「审核 SQL 的人」。前者拼的是记忆，后者拼的是判断力。</div>
-
-  <div class="page-num">09</div>
-  <div class="footer-mark">OpenCode 入门</div>
-</section>
-
-<!-- ═══════════════════ Slide 08 · 案例二：会议纪要 ═══════════════════ -->
-<section class="slide">
-  <span class="eyebrow">10 · 案例</span>
-  <h2>案例二：零散笔记扔进去，按你的模板格式输出完整会议纪要</h2>
-
-  <p class="lead">你只记了关键词、几个数字、三个待办事项。</p>
-  <p class="mb">告诉 OpenCode：「把这些笔记按以下格式整理成会议纪要——会议主题 / 参会人 / 核心结论 / 待办事项（责任人+截止日期）/ 下次会议时间」。它自动识别关键信息、结构化输出、格式统一。四十分钟的整理变成两分钟审核。</p>
-
-  <div class="co">「以前每次开完会最怕整理纪要，现在开完会最轻松的就是这一步。」</div>
 
   <div class="page-num">10</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 09 · 案例三：流程图 ═══════════════════ -->
+<!-- ═══════════════════ Slide 11 · 案例二：会议纪要 ═══════════════════ -->
 <section class="slide">
   <span class="eyebrow">11 · 案例</span>
-  <h2>案例三：用自然语言描述流程，十秒生成可直接粘贴的流程图</h2>
+  <h2>案例二：零散笔记扔进去，按你的模板格式输出完整会议纪要</h2>
 
-  <p class="lead">告别拖拽画图。</p>
-  <p class="mb">告诉 OpenCode：「画一个采购审批流程：申请人提交 → 部门经理审批 → 金额超 5,000 转财务总监 → 审批通过后生成采购单」。它生成 Mermaid 代码，你粘贴到飞书文档——直接渲染成流程图。改需求？改文字描述就行，不用重画。</p>
+  <p class="lead">你只记了关键词、几个数字、三个待办事项。</p>
+  <p class="mb">告诉 OpenCode：「把这些笔记按以下格式整理成会议纪要——会议主题 / 参会人 / 核心结论 / 待办事项（责任人+截止日期）/ 下次会议时间」。它自动识别关键信息、结构化输出、格式统一。四十分钟的整理变成两分钟审核。</p>
 
-  <div class="co">比拖拽画图快十倍。修改成本从「重画」变成「重写一句话」。</div>
+  <div style="background:var(--brand-tint);border:1.5px dashed var(--brand);border-radius:4pt;padding:12pt;text-align:center;color:var(--brand);font-size:10pt;margin-bottom:8pt">
+    🖼️ [图片占位符：会议纪要生成示例 — 零散笔记 → 结构化会议纪要]
+  </div>
+
+  <div class="co">「以前每次开完会最怕整理纪要，现在开完会最轻松的就是这一步。」</div>
 
   <div class="page-num">11</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 10 · 更多场景 ═══════════════════ -->
+<!-- ═══════════════════ Slide 12 · 案例三：流程图 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">12 · 更多场景</span>
+  <span class="eyebrow">12 · 案例</span>
+  <h2>案例三：用自然语言描述流程，十秒生成可直接粘贴的流程图</h2>
+
+  <p class="lead">告别拖拽画图。</p>
+  <p class="mb">告诉 OpenCode：「画一个采购审批流程：申请人提交 → 部门经理审批 → 金额超 5,000 转财务总监 → 审批通过后生成采购单」。它生成 Mermaid 代码，你粘贴到飞书文档——直接渲染成流程图。改需求？改文字描述就行，不用重画。</p>
+
+  <div style="background:var(--brand-tint);border:1.5px dashed var(--brand);border-radius:4pt;padding:12pt;text-align:center;color:var(--brand);font-size:10pt;margin-bottom:8pt">
+    🖼️ [图片占位符：流程图生成示例 — 文字描述 → Mermaid 代码 → 渲染后的流程图]
+  </div>
+
+  <div class="co">比拖拽画图快十倍。修改成本从「重画」变成「重写一句话」。</div>
+
+  <div class="page-num">12</div>
+  <div class="footer-mark">OpenCode 入门</div>
+</section>
+
+<!-- ═══════════════════ Slide 13 · 更多场景 ═══════════════════ -->
+<section class="slide">
+  <span class="eyebrow">13 · 更多场景</span>
   <h2>这四个场景，你下周就能用上</h2>
 
   <table class="t2x2">
@@ -673,13 +728,13 @@
     </tr>
   </table>
 
-  <div class="page-num">12</div>
+  <div class="page-num">13</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 11 · 怎么上手 ═══════════════════ -->
+<!-- ═══════════════════ Slide 14 · 怎么上手 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">13 · 怎么开始</span>
+  <span class="eyebrow">14 · 怎么开始</span>
   <h2>三步装好 OpenCode，今天下班前就能试</h2>
 
   <div class="c2">
@@ -698,13 +753,13 @@
 
   <div class="co">提示：不需要「学完再用」。直接拿一个真实任务试，边用边学最快。</div>
 
-  <div class="page-num">13</div>
+  <div class="page-num">14</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 12 · 关注谁 ═══════════════════ -->
+<!-- ═══════════════════ Slide 15 · 关注谁 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">14 · 关注谁</span>
+  <span class="eyebrow">15 · 关注谁</span>
   <h2>推荐 6 位中文 AI 圈值得关注的人</h2>
 
   <table class="data">
@@ -742,13 +797,13 @@
 
   <div class="mc">建议先关注前面 2-3 位，看看风格合不合。关注太多反而刷不过来。</div>
 
-  <div class="page-num">14</div>
+  <div class="page-num">15</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
-<!-- ═══════════════════ Slide 15 · 金句收尾 ═══════════════════ -->
+<!-- ═══════════════════ Slide 16 · 金句收尾 ═══════════════════ -->
 <section class="slide">
-  <span class="eyebrow">15 · 最后</span>
+  <span class="eyebrow">16 · 最后</span>
   <h2>与其担心 AI 替代你，不如先让 AI 替你加班</h2>
 
   <div class="quote">「AI 不会取代你，但会用 AI 的人会。」</div>
@@ -760,7 +815,7 @@
 
   <div class="co" style="text-align:center;">工具在进化，但你懂业务这件事——AI 永远追不上。</div>
 
-  <div class="page-num">15</div>
+  <div class="page-num">16</div>
   <div class="footer-mark">OpenCode 入门</div>
 </section>
 
