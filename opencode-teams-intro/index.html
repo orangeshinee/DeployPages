@@ -139,7 +139,7 @@
     font-size:14px;letter-spacing:.16em;text-transform:uppercase;
     opacity:.7;margin-bottom:auto
   }
-  .chrome .l,.chrome .r{display:flex;gap:1.6em;align-items:center}
+  .chrome .l,.chrome .r{display:flex;gap:1.6em;align-items:flex-start}
   .chrome .sep{width:24px;height:1px;background:currentColor;opacity:.5}
 
   .foot{
@@ -159,7 +159,7 @@
     font-family:var(--mono);
     font-size:14px;letter-spacing:.24em;text-transform:uppercase;
     opacity:.65;margin-bottom:2.4vh;
-    display:inline-flex;align-items:center;gap:.8em
+    display:inline-flex;align-items:flex-start;gap:.8em
   }
   .kicker::before{
     content:"";width:24px;height:1px;background:currentColor;opacity:.6
@@ -459,7 +459,7 @@
 
   /* 工具类 */
   .col{display:flex;flex-direction:column;gap:2vh}
-  .row{display:flex;align-items:center;gap:2vw}
+  .row{display:flex;align-items:flex-start;gap:2vw}
   .fill{flex:1}
   .center{align-items:center;justify-content:center;text-align:center}
   .right{text-align:right;justify-self:end}
@@ -578,7 +578,7 @@
 
   /* ============ Bar Chart (扁平几何图表) ============ */
   .bar-chart{display:flex;flex-direction:column;gap:1.4vh}
-  .bar-row{display:grid;grid-template-columns:8em 1fr 4em;gap:1.4vw;align-items:center}
+  .bar-row{display:grid;grid-template-columns:8em 1fr 4em;gap:1.4vw;align-items:flex-start}
   .bar-row .bar-label{font-family:var(--mono);font-size:max(14px,.84vw);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
   .bar-row .bar-track{height:14px;background:rgba(127,127,127,.18);position:relative}
   .bar-row .bar-fill{height:100%;background:var(--accent);position:absolute;left:0;top:0}
@@ -740,7 +740,7 @@
     display:grid;
     grid-template-columns:var(--tl-axis-w) minmax(0,7em) minmax(0,7.6em) 1fr;
     gap:0 var(--sp-5);
-    align-items:center;
+    align-items:flex-start;
     padding:var(--sp-7) 0
   }
   /* 进度点: 纯色实心圆,无背景无描边,精确居中在 axis 列中线 */
@@ -783,7 +783,7 @@
     --tl-dot:8px;
     position:relative;
     flex:1;
-    display:flex;align-items:center
+    display:flex;align-items:flex-start
   }
   .timeline-h::before{
     content:"";position:absolute;
@@ -795,7 +795,7 @@
   .timeline-h .tl-row{
     position:relative;width:100%;
     display:grid;grid-template-columns:repeat(5,1fr);
-    align-items:center
+    align-items:flex-start
   }
   .timeline-h .th-node{
     position:relative;display:flex;justify-content:center
@@ -892,7 +892,7 @@
   .bar-tower .cap{
     background:var(--grey-1);
     height:5.6vh;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:flex-start;justify-content:center;
     margin-bottom:.4vh
   }
   .bar-tower .cap svg{width:1.6vw;height:1.6vw;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -1035,7 +1035,7 @@
     display:grid;
     grid-template-columns:11em minmax(0,1fr) 8em;
     gap:1.6vh 1.6vw;
-    align-items:center;
+    align-items:flex-start;
     margin-top:2.4vh;
     font-feature-settings:"tnum"
   }
@@ -1112,7 +1112,7 @@
     font-family:var(--mono);font-size:max(14px,.78vw);
     letter-spacing:.16em;text-transform:uppercase;
     color:var(--grey-3);
-    display:flex;align-items:center;gap:.6vw
+    display:flex;align-items:flex-start;gap:.6vw
   }
   .duo-compare .col-tag .num{
     font-weight:600;color:var(--ink);
@@ -1233,9 +1233,9 @@
       <div class="l">AI 编程助手 · 数字化内部分享</div>
       <div class="r">🍃 LE · 26.06.08 · 01 / 15</div>
     </div>
-    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
+    <div style="flex:1;padding:0;display:grid;grid-template-rows:auto auto auto;gap:2.6vh">
       <div data-anim="kicker" class="t-meta" style="color:rgba(0,0,0,.78);letter-spacing:.22em">FROM DESCRIPTION TO DELIVERY</div>
-      <h1 data-anim="title" style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(11.6vw,19vh);line-height:.94;letter-spacing:-.025em;color:var(--ink)">AI 编程助手<br/><span style="font-style:italic;font-weight:300">从描述到产出</span></h1>
+      <h1 data-anim="title" style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(11.6vw,19vh);line-height:.94;letter-spacing:-.025em;color:var(--ink)">AI 编程助手<br/><span style="font-style:italic;font-weight:300">从描述到产出</span></h1>
       <div data-anim="bottom" style="display:grid;grid-template-rows:auto auto;gap:1.6vh;border-top:1px solid rgba(0,0,0,.16);padding-top:2vh">
         <div data-anim="lead" class="lead" style="max-width:52ch;color:var(--text-secondary);font-weight:300">用 OpenCode 让每个业务需求——从 SQL 查询到会议纪要——直接变为可交付成果。</div>
         <div style="display:flex;justify-content:space-between;align-items:end">
@@ -1293,35 +1293,35 @@
           <div class="tl-axis"><span class="dot" style="background:var(--accent)"></span></div>
           <div class="tl-body">
             <span class="yr" style="color:var(--accent)">2022</span>
-            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">ChatGPT 3.5<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 对话式代码生成</small></span>
+            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">ChatGPT + DALL·E 2<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 对话式AI · 文本生图</small></span>
           </div>
         </div>
         <div class="tl-node">
           <div class="tl-axis"><span class="dot" style="background:var(--accent)"></span></div>
           <div class="tl-body">
             <span class="yr" style="color:var(--accent)">2023</span>
-            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">GitHub Copilot<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· IDE 内补全时代</small></span>
+            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">GPT-4 + Midjourney V5<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 多模态 · 图像AI大爆发</small></span>
           </div>
         </div>
         <div class="tl-node">
           <div class="tl-axis"><span class="dot" style="background:var(--accent)"></span></div>
           <div class="tl-body">
             <span class="yr" style="color:var(--accent)">2024</span>
-            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">Claude Code / Codex<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 终端 Agent 时代</small></span>
+            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">Sora + Claude Code<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 视频生成 · 终端Agent</small></span>
           </div>
         </div>
         <div class="tl-node">
           <div class="tl-axis"><span class="dot" style="background:var(--accent)"></span></div>
           <div class="tl-body">
             <span class="yr" style="color:var(--accent)">2025</span>
-            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">OpenCode 开源<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 社区驱动，自由透明</small></span>
+            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">OpenCode 开源<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 视频/图像AI人人可用</small></span>
           </div>
         </div>
         <div class="tl-node" style="border:none">
           <div class="tl-axis"><span class="dot" style="background:var(--accent)"></span></div>
           <div class="tl-body">
             <span class="yr" style="color:var(--accent)">2026</span>
-            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">人人可用的 AI 搭档<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 不限编程背景</small></span>
+            <span class="multi" style="font-weight:200;font-size:min(3.8vw,6.8vh);color:#fff">多模态融合时代<small style="font-weight:300;font-size:max(14px,1vw);color:rgba(255,255,255,.7);margin-left:1vw">· 文本/图像/视频/代码 AI 无缝衔接</small></span>
           </div>
         </div>
       </div>
@@ -1329,8 +1329,8 @@
   </div>
 </section>
 
-<!-- ============ P4 · Three Forces — 不是聊天机器人 ============ -->
-<section class="slide light" data-animate="three-forces" data-layout="S13">
+<!-- ============ P4 · Stack Row — 模型 / Agent / Skill 三层架构 ============ -->
+<section class="slide light" data-animate="stack-blocks" data-layout="S15">
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">CORE CONCEPT · 核心认知</div>
@@ -1338,31 +1338,43 @@
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:5vh">
       <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh">
-        <div class="t-meta">Not a Chatbot</div>
-        <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:.96;letter-spacing:-.035em">不是聊天机器人，<br/>是 <span style="font-style:italic;font-weight:300">AI 工程师</span></h2>
+        <div class="t-meta">Model · Agent · Skill</div>
+        <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:.96;letter-spacing:-.035em">不是聊天机器人，<br/>是 <span style="font-style:italic;font-weight:300">AI 智能体</span></h2>
       </div>
-      <div class="three-forces" data-anim="forces" style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:3vw">
-        <div class="force-card card-fill" style="display:flex;flex-direction:column;gap:2vh;padding:3.2vh 2.6vw">
-          <span class="force-num" style="font-weight:200;font-size:min(5.6vw,10vh);color:var(--accent);line-height:.85">01</span>
-          <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh)">感知环境</h3>
-          <p style="font-weight:300;font-size:max(16px,1.1vw);color:var(--text-secondary);line-height:1.5">读取文件、查看目录结构、搜索网络信息、理解项目上下文——AI 像人一样先"看"再"想"。</p>
+      <div class="stack-row" data-anim="stacks" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.6vw;flex:1;align-items:stretch">
+        <div class="stack-block b-grey" style="display:flex;flex-direction:column;padding:3.2vh 1.8vw 2.4vh">
+          <span class="layer-nb" style="font-family:var(--mono);font-size:max(14px,.84vw);letter-spacing:.18em;opacity:.65;margin-bottom:auto">LAYER 01</span>
+          <div class="layer-icon" style="margin-bottom:1.6vh">
+            <svg viewBox="0 0 48 48" style="width:3vw;height:3vw"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="24" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 2"/></svg>
+          </div>
+          <h3 class="layer-ttl" style="font-weight:400;font-size:max(17px,2vw);line-height:1.1;letter-spacing:-.02em">模型<br/>Model</h3>
+          <p class="layer-desc" style="font-weight:400;font-size:max(16px,.94vw);line-height:1.55;opacity:.88;margin-top:1.4vh">大语言模型（如 DeepSeek、GPT）提供理解、推理、生成的基础能力。它是引擎，但不是方向盘。</p>
+          <span class="layer-tag" style="font-family:var(--mono);font-size:max(14px,.74vw);letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:1.6vh;border-top:1px solid currentColor;padding-top:1vh">基础智能</span>
         </div>
-        <div class="force-card card-fill" style="display:flex;flex-direction:column;gap:2vh;padding:3.2vh 2.6vw">
-          <span class="force-num" style="font-weight:200;font-size:min(5.6vw,10vh);color:var(--accent);line-height:.85">02</span>
-          <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh)">自主决策</h3>
-          <p style="font-weight:300;font-size:max(16px,1.1vw);color:var(--text-secondary);line-height:1.5">规划执行步骤、选择合适的工具、判断何时该问人、何时自己干——不是傻傻回答问题。</p>
+        <div class="stack-block b-accent" style="display:flex;flex-direction:column;padding:3.2vh 1.8vw 2.4vh;background:var(--accent);color:var(--accent-on)">
+          <span class="layer-nb" style="font-family:var(--mono);font-size:max(14px,.84vw);letter-spacing:.18em;opacity:.65;margin-bottom:auto">LAYER 02</span>
+          <div class="layer-icon" style="margin-bottom:1.6vh">
+            <svg viewBox="0 0 48 48" style="width:3vw;height:3vw"><rect x="8" y="8" width="32" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 20h16M16 28h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="layer-ttl" style="font-weight:400;font-size:max(17px,2vw);line-height:1.1;letter-spacing:-.02em">智能体<br/>Agent</h3>
+          <p class="layer-desc" style="font-weight:400;font-size:max(16px,.94vw);line-height:1.55;opacity:.88;margin-top:1.4vh">自主规划、选择工具、循环执行、判断结果。它是大脑——决定"怎么做"以及"下一步做什么"。OpenCode/Claude Code 都是 Agent。</p>
+          <span class="layer-tag" style="font-family:var(--mono);font-size:max(14px,.74vw);letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:1.6vh;border-top:1px solid currentColor;padding-top:1vh">自主决策</span>
         </div>
-        <div class="force-card card-fill" style="display:flex;flex-direction:column;gap:2vh;padding:3.2vh 2.6vw">
-          <span class="force-num" style="font-weight:200;font-size:min(5.6vw,10vh);color:var(--accent);line-height:.85">03</span>
-          <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh)">执行行动</h3>
-          <p style="font-weight:300;font-size:max(16px,1.1vw);color:var(--text-secondary);line-height:1.5">写文件、跑命令、调 API、生成图表——不仅仅告诉你"怎么做"，而是直接输出结果。</p>
+        <div class="stack-block b-ink" style="display:flex;flex-direction:column;padding:3.2vh 1.8vw 2.4vh;background:var(--ink);color:var(--paper)">
+          <span class="layer-nb" style="font-family:var(--mono);font-size:max(14px,.84vw);letter-spacing:.18em;opacity:.65;margin-bottom:auto">LAYER 03</span>
+          <div class="layer-icon" style="margin-bottom:1.6vh">
+            <svg viewBox="0 0 48 48" style="width:3vw;height:3vw"><path d="M12 36V16l12-8v20z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M24 28l12-8v20l-12 8z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <h3 class="layer-ttl" style="font-weight:400;font-size:max(17px,2vw);line-height:1.1;letter-spacing:-.02em">技能<br/>Skill</h3>
+          <p class="layer-desc" style="font-weight:400;font-size:max(16px,.94vw);line-height:1.55;opacity:.88;margin-top:1.4vh">可插拔的能力模块：写 SQL、画图表、做纪要、生成流程图……Agent 通过技能与实际世界交互。<strong style="color:var(--accent)">编程只是技能之一</strong>。</p>
+          <span class="layer-tag" style="font-family:var(--mono);font-size:max(14px,.74vw);letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:1.6vh;border-top:1px solid currentColor;padding-top:1vh">工具能力</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ P5 · Four Cards — 四款工具一览 ============ -->
+<!-- ============ P5 · Four Cards — AI Agent 能力对比 ============ -->
 <section class="slide light" data-animate="four-cards" data-layout="S19">
   <div class="canvas-card">
     <div class="chrome-min">
@@ -1371,29 +1383,29 @@
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:5vh">
       <div data-anim="head" style="display:flex;flex-direction:column;gap:1.4vh">
-        <div class="t-meta">AI Coding Agents in 2026</div>
-        <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:.96;letter-spacing:-.035em">AI 编程工具一览</h2>
+        <div class="t-meta">AI Agents in 2026 — 不只是编程</div>
+        <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:.96;letter-spacing:-.035em">AI Agent 能力对比</h2>
       </div>
       <div class="four-cards" data-anim="cards" style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2vw">
         <div class="fc-col" style="display:flex;flex-direction:column;gap:1.2vh;border-top:4px solid var(--accent);padding-top:2.4vh">
-          <span class="t-meta" style="color:var(--accent)">— 01 · 开源先锋</span>
+          <span class="t-meta" style="color:var(--accent)">— 01 · 开源 Agent</span>
           <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh);margin-bottom:.6vh">OpenCode</h3>
-          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">Codex 的开源镜像。社区驱动，可自托管。不需要编程背景，中文描述即可工作。</p>
+          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">Codex CLI 的开源实现。<strong>Agent 系统</strong>，可自托管。通过 Skill 插件扩展能力——编程、写文档、画图表、查数据，都是它的"技能"。</p>
         </div>
         <div class="fc-col" style="display:flex;flex-direction:column;gap:1.2vh;border-top:4px solid var(--grey-2);padding-top:2.4vh">
-          <span class="t-meta">— 02 · 闭源商业</span>
+          <span class="t-meta">— 02 · 商业 Agent</span>
           <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh);margin-bottom:.6vh">Claude Code</h3>
-          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">Anthropic 出品。终端里的 AI 协作者，擅长复杂推理任务。闭源，需要 API Key。</p>
+          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">Anthropic 出品的<strong>商业 Agent 系统</strong>。终端里的 AI 协作者，擅长复杂推理。闭源，需 API Key。同样不只是写代码——做分析、改文档、整理数据全能。</p>
         </div>
         <div class="fc-col" style="display:flex;flex-direction:column;gap:1.2vh;border-top:4px solid var(--grey-2);padding-top:2.4vh">
-          <span class="t-meta">— 03 · GPT 家族</span>
+          <span class="t-meta">— 03 · GPT Agent</span>
           <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh);margin-bottom:.6vh">Codex (OpenAI)</h3>
-          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">GPT 家族的编程 Agent。自然语言直达可运行代码，闭源但 API 开放。</p>
+          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">OpenAI 的 <strong>Agent 系统</strong>。GPT 驱动，自然语言直达可执行操作。闭源但 API 开放。同样支持多种任务——数据处理、文档输出、代码生成。</p>
         </div>
         <div class="fc-col" style="display:flex;flex-direction:column;gap:1.2vh;border-top:4px solid var(--grey-2);padding-top:2.4vh">
-          <span class="t-meta">— 04 · 全能选手</span>
+          <span class="t-meta">— 04 · 大语言模型</span>
           <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:min(1.8vw,3.2vh);margin-bottom:.6vh">DeepSeek</h3>
-          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5">国产大模型，推理能力强。适合中文场景，性价比极高。也是 OpenCode 可选的底层模型。</p>
+          <p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);line-height:1.5"><strong>大语言模型</strong>，不是 Agent 系统。推理能力强，中文场景性价比高。可以作为 Agent（如 OpenCode）的<strong>底层推理引擎</strong>使用。</p>
         </div>
       </div>
     </div>
@@ -1412,9 +1424,9 @@
         <div class="t-meta" style="color:var(--accent-bright)">What is OpenCode?</div>
         <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:.96;letter-spacing:-.035em;color:#fff">OpenCode 是什么</h2>
       </div>
-      <div class="system-diagram" data-anim="sys" style="flex:1;display:grid;grid-template-columns:1fr 1.4fr;gap:4vw;align-items:center">
+      <div class="system-diagram" data-anim="sys" style="flex:1;display:grid;grid-template-columns:1fr 1.4fr;gap:4vw;align-items:flex-start">
         <div style="display:flex;flex-direction:column;gap:2.4vh">
-          <p class="lead" style="font-weight:300;font-size:max(17px,1.2vw);color:rgba(255,255,255,.86);line-height:1.6">OpenCode 是 Codex CLI 的<b>开源版本</b>——一个终端里的 AI 编程 Agent。<br/><br/>它不是一个聊天窗口，而是一个<b>能操作你电脑的 AI 搭档</b>：读你的文件、执行命令、生成结果。</p>
+          <p class="lead" style="font-weight:300;font-size:max(17px,1.2vw);color:rgba(255,255,255,.86);line-height:1.6">OpenCode 是 Codex CLI 的<b>开源版本</b>——一个终端里的 AI Agent。<br/><br/>它不是一个聊天窗口，而是一个<b>能操作你电脑的 AI 搭档</b>：读你的文件、执行命令、生成结果。<strong style="color:var(--accent-bright)">编程只是它的技能之一。</strong></p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;margin-top:2vh">
             <div class="card-outlined" style="padding:1.6vh 1.4vw;border:1px solid rgba(255,255,255,.2)">
               <span class="t-meta" style="color:var(--accent-bright)">✅ 自由开源</span>
@@ -1434,7 +1446,7 @@
             </div>
           </div>
         </div>
-        <div class="sys-label" style="position:relative;display:flex;justify-content:center;align-items:center">
+        <div class="sys-label" style="position:relative;display:flex;justify-content:center;align-items:flex-start">
           <!-- SVG 装饰环 — 纯几何,标签在下方 HTML -->
           <svg viewBox="0 0 400 400" style="width:80%;max-width:320px;display:block">
             <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
@@ -1465,7 +1477,7 @@
         <div class="t-meta">The Loop</div>
         <h2 style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5.2vw,9.2vh);line-height:.96;letter-spacing:-.035em">OpenCode 工作原理</h2>
       </div>
-      <div class="loop-diagram" data-anim="loop" style="flex:1;display:grid;grid-template-columns:1fr 1.2fr;gap:4vw;align-items:center">
+      <div class="loop-diagram" data-anim="loop" style="flex:1;display:grid;grid-template-columns:1fr 1.2fr;gap:4vw;align-items:flex-start">
         <div class="loop-steps" style="display:flex;flex-direction:column;gap:2.4vh">
           <div style="display:flex;gap:1.2vw;align-items:flex-start">
             <span class="t-meta" style="color:var(--accent);font-size:max(18px,1.3vw);font-weight:600">01</span>
@@ -1484,7 +1496,7 @@
             <div><b style="font-weight:500;font-size:max(16px,1.1vw)">交付成果给你确认</b><p style="font-weight:300;font-size:max(15px,1vw);color:var(--text-secondary);margin-top:.3vh">不满意就继续调整，直到你满意为止</p></div>
           </div>
         </div>
-        <div class="loop-svg" style="display:flex;justify-content:center;align-items:center">
+        <div class="loop-svg" style="display:flex;justify-content:center;align-items:flex-start">
           <svg viewBox="0 0 300 300" style="width:70%;max-width:260px;display:block">
             <defs>
               <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
@@ -1546,19 +1558,19 @@
 <section class="slide light" data-animate="image-hero" data-layout="S22">
   <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
     <div data-anim="img" style="position:relative;flex:0 0 58%;overflow:hidden;background:var(--accent)" data-image-slot="s22-hero-21x9">
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:2vh 4vw">
+      <div style="position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding:2vh 4vw">
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2vw;width:100%;max-width:72vw">
-          <div style="background:rgba(0,0,0,.06);padding:3vh 1.6vw;text-align:center;backdrop-filter:blur(2px)">
+          <div style="background:rgba(0,0,0,.06);padding:3vh 1.6vw;backdrop-filter:blur(2px)">
             <div class="t-meta" style="color:rgba(0,0,0,.6);font-size:max(13px,.9vw)">📊 SQL 查询</div>
             <div style="font-family:var(--sans);font-weight:200;font-size:min(2.6vw,4.6vh);line-height:1;color:var(--ink);margin-top:1.2vh">说需求<br/>得数据</div>
             <div class="t-meta" style="color:var(--text-helper);margin-top:1vh">不再等开发排期</div>
           </div>
-          <div style="background:rgba(0,0,0,.06);padding:3vh 1.6vw;text-align:center;backdrop-filter:blur(2px)">
+          <div style="background:rgba(0,0,0,.06);padding:3vh 1.6vw;backdrop-filter:blur(2px)">
             <div class="t-meta" style="color:rgba(0,0,0,.6);font-size:max(13px,.9vw)">📝 会议纪要</div>
             <div style="font-family:var(--sans);font-weight:200;font-size:min(2.6vw,4.6vh);line-height:1;color:var(--ink);margin-top:1.2vh">丢笔记<br/>出纪要</div>
             <div class="t-meta" style="color:var(--text-helper);margin-top:1vh">自动按模板格式化</div>
           </div>
-          <div style="background:rgba(0,0,0,.06);padding:3vh 1.6vw;text-align:center;backdrop-filter:blur(2px)">
+          <div style="background:rgba(0,0,0,.06);padding:3vh 1.6vw;backdrop-filter:blur(2px)">
             <div class="t-meta" style="color:rgba(0,0,0,.6);font-size:max(13px,.9vw)">🔄 流程图</div>
             <div style="font-family:var(--sans);font-weight:200;font-size:min(2.6vw,4.6vh);line-height:1;color:var(--ink);margin-top:1.2vh">说流程<br/>出图表</div>
             <div class="t-meta" style="color:var(--text-helper);margin-top:1vh">告别拖拽对齐</div>
@@ -1570,7 +1582,7 @@
         <div class="r">09 / 15</div>
       </div>
     </div>
-    <div data-anim="kpi" class="image-hero-body" style="flex:1;padding:3.6vh 5vw 2.4vh;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4vw;align-items:center">
+    <div data-anim="kpi" class="image-hero-body" style="flex:1;padding:3.6vh 5vw 2.4vh;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4vw;align-items:flex-start">
       <div>
         <div style="border-top:1px solid var(--ink);padding-top:1.2vh">
           <div class="t-meta">场景 01</div>
@@ -1658,20 +1670,20 @@
       </div>
       <div class="timeline-h" data-anim="tl" style="flex:1;display:flex;flex-direction:column;justify-content:center">
         <span class="tl-h-axis" style="background:rgba(255,255,255,.15)"></span>
-        <div class="tl-h-node" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:1.6vh">
+        <div class="tl-h-node" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:1.6vh">
           <span class="num" style="font-weight:200;font-size:min(3.2vw,5.6vh);color:var(--accent)">01</span>
           <span class="dot" style="width:10px;height:10px;background:var(--accent)"></span>
-          <span class="lbl" style="font-weight:300;font-size:max(15px,1.1vw);color:rgba(255,255,255,.86);text-align:center">安装环境<br/><span style="font-weight:200;font-size:max(13px,.9vw);color:rgba(255,255,255,.55)">运维已统一配置好，你只需要一个 API Key</span></span>
+          <span class="lbl" style="font-weight:300;font-size:max(15px,1.1vw);color:rgba(255,255,255,.86)">安装环境<br/><span style="font-weight:200;font-size:max(13px,.9vw);color:rgba(255,255,255,.55)">运维已统一配置好，你只需要一个 API Key</span></span>
         </div>
-        <div class="tl-h-node" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:1.6vh">
+        <div class="tl-h-node" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:1.6vh">
           <span class="num" style="font-weight:200;font-size:min(3.2vw,5.6vh);color:var(--accent)">02</span>
           <span class="dot" style="width:10px;height:10px;background:var(--accent)"></span>
-          <span class="lbl" style="font-weight:300;font-size:max(15px,1.1vw);color:rgba(255,255,255,.86);text-align:center">记住 3 条指令<br/><span style="font-weight:200;font-size:max(13px,.9vw);color:rgba(255,255,255,.55)">"帮我生成…"、"分析这个…"、"改成…格式"——够了</span></span>
+          <span class="lbl" style="font-weight:300;font-size:max(15px,1.1vw);color:rgba(255,255,255,.86)">记住 3 条指令<br/><span style="font-weight:200;font-size:max(13px,.9vw);color:rgba(255,255,255,.55)">"帮我生成…"、"分析这个…"、"改成…格式"——够了</span></span>
         </div>
-        <div class="tl-h-node" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:1.6vh">
+        <div class="tl-h-node" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:1.6vh">
           <span class="num" style="font-weight:200;font-size:min(3.2vw,5.6vh);color:var(--accent)">03</span>
           <span class="dot" style="width:10px;height:10px;background:var(--accent)"></span>
-          <span class="lbl" style="font-weight:300;font-size:max(15px,1.1vw);color:rgba(255,255,255,.86);text-align:center">选需求试水<br/><span style="font-weight:200;font-size:max(13px,.9vw);color:rgba(255,255,255,.55)">从最简单的开始：整理周报、画流程图，体验一次即时交付</span></span>
+          <span class="lbl" style="font-weight:300;font-size:max(15px,1.1vw);color:rgba(255,255,255,.86)">选需求试水<br/><span style="font-weight:200;font-size:max(13px,.9vw);color:rgba(255,255,255,.55)">从最简单的开始：整理周报、画流程图，体验一次即时交付</span></span>
         </div>
       </div>
     </div>
